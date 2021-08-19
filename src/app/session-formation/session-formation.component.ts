@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { OtherService } from '../services/other.service';
 
 @Component({
   selector: 'app-session-formation',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SessionFormationComponent implements OnInit {
 
-  constructor() { }
+  sessionFormations: any;
+
+  constructor(private http: HttpClient, private otherService: OtherService) { }
 
   ngOnInit(): void {
+    this.recupAllSessionFormation();
   }
 
+  recupAllSessionFormation(): any {
+    this.http.get(this.otherService.lienBack + 'session_formation').subscribe({
+      next: (data) => { this.sessionFormations = data },
+      error: (err) => { console.log(err) }
+    });
+  }
 }

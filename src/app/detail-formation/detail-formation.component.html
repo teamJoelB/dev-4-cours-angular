@@ -1,13 +1,6 @@
 <div class="container">
-
-    <div class="row" style="font-weight: bold;">
-        <div class="col-sm-3 text-secondary">Nom de la formation</div>
-        <div class="col-sm-3 text-secondary">Date de début</div>
-        <div class="col-sm-3 text-secondary">Date de fin</div>
-        <div class="col-sm-3 text-secondary text-center">Nombre de place</div>
-    </div>
-    <br>
-    <div *ngFor='let sf of sessionFormations'>
+    <h2 class="text-secondary" style="letter-spacing: 6px;">Voici les détail de la formation <span style="background-color: rgb(170, 65, 202); color: white; border-radius: 4px; padding: 3px;">{{ data.nom }}</span></h2>
+    <div *ngFor='let sf of sessionFormation'>
         <div class="card p-3">
             <div class="row">
                 <div class="col-sm-3">
@@ -26,5 +19,4 @@
         </div>
         <br>
     </div>
-
 </div>

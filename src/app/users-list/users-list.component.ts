@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { OtherService } from '../services/other.service';
 
 @Component({
   selector: 'app-users-list',
@@ -9,14 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class UsersListComponent implements OnInit {
 
   users: any;
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private otherService: OtherService) { }
 
   ngOnInit(): void {
     this.recupAllUser();
   }
 
   recupAllUser(): void {
-    this.http.get('http://localhost:8084/person').subscribe({
+    this.http.get(this.otherService.lienBack + 'person').subscribe({
       next: (data) => { this.users = data },
       error: (err) => { console.log(err) }
     });
